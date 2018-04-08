@@ -1,9 +1,5 @@
-s/^Listen 80/Listen 0.0.0.0:8080/
-s/^User apache/User default/
-s/^Group apache/Group root/
-s%^DocumentRoot "/opt/rh/httpd24/root/var/www/html"%DocumentRoot "/opt/app-root/src"%
-s%^<Directory "/opt/rh/httpd24/root/var/www/html"%<Directory "/opt/app-root/src"%
-s%^<Directory "/opt/rh/httpd24/root/var/html"%<Directory "/opt/app-root/src"%
-s%^ErrorLog "logs/error_log"%ErrorLog "/tmp/error_log"%
-s%CustomLog "logs/access_log"%CustomLog "/tmp/access_log"%
-151s%AllowOverride None%AllowOverride All%
+/listen/s%80%8080%
+s/^user *nginx;//
+s%/etc/opt/rh/rh-nginx112/nginx/conf.d/%/opt/app-root/etc/nginx.d/%
+s%/etc/opt/rh/rh-nginx112/nginx/default.d/%/opt/app-root/etc/nginx.default.d/%
+s%/opt/rh/rh-nginx112/root/usr/share/nginx/html%/opt/app-root/src%
