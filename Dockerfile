@@ -1,10 +1,6 @@
 FROM centos/s2i-base-centos7
 
-# FROM openshift/base-centos7
-
 # This image provides a S2I builder image for Angular applications running inside nginx web container.
-
-MAINTAINER Kevin McWhirter <spam@gmail.com>
 
 LABEL summary="Platform for building and running Angular applications" \
       io.k8s.description="OpenShift S2I builder image for Angular apps using Angular CLI and nginx." \
@@ -53,7 +49,6 @@ RUN sed -i -f /opt/app-root/etc/nginxconf.sed /etc/opt/rh/rh-nginx112/nginx/ngin
     mkdir -p /var/opt/rh/rh-nginx112/lib/nginx/tmp/proxy && \
     chown -R 1001 /var/opt/rh/rh-nginx112 && \
     find /var/opt/rh/rh-nginx112 -type d -exec chmod 777 {} \; && \
-    # chmod -R a+rwx /opt/rh/rh-nginx112/root/usr/sbin/nginx && \
     chown -R 1001 /opt/app-root
 USER 1001
 
