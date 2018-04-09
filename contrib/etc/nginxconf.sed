@@ -1,3 +1,4 @@
+/\s*#/d
 /listen/s%80%8080%
 s/^user *nginx;//
 s%/etc/opt/rh/rh-nginx112/nginx/conf.d/%/opt/app-root/etc/nginx.d/%
