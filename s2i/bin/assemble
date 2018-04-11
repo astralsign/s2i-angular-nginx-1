@@ -1,12 +1,12 @@
 #!/bin/sh -e
 
-# Paths based on https://docs.openshift.org/latest/creating_images/s2i.html#s2i-scripts
+# Paths based on https://docs.openshift.org/latest/creating_images/s2i.html#s2i-scripts are wrong
 
-pushd /tmp/s2i/src
+pushd /tmp/src
 
-if [ "$(ls /tmp/s2i/artifacts/ 2>/dev/null)" ]; then
+if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
     echo "---> Restoring build artifacts (node_modules)"
-    mv /tmp/s2i/artifacts/* .
+    mv /tmp/artifacts/* .
 fi
 
 echo "---> Installing NPM Dependencies (with dev)"
@@ -19,10 +19,10 @@ echo "---> Building Angular CLI Application"
 popd
 
 echo "---> Installing application to web container"
-cp -Rf /tmp/s2i/src/dist/. ./
+cp -Rf /tmp/src/dist/. ./
 
 # echo "---> Removing application source"
-# rm -rf /tmp/s2i/src
+# rm -rf /tmp/src
 
 # Fix source directory permissions
 fix-permissions ./
