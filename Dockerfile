@@ -9,7 +9,8 @@ LABEL summary="Platform for building and running Angular applications" \
       io.openshift.tags="builder,angular" \
       com.redhat.dev-mode="DEV_MODE:false" \
       com.redhat.deployments-dir="/opt/app-root/src" \
-      com.redhat.dev-mode.port="DEBUG_PORT:5858"
+      com.redhat.dev-mode.port="DEBUG_PORT:5858" \
+      docker.io.image="klmcwhirter/angular-s2i-nginx"
 
 EXPOSE 8080
 
