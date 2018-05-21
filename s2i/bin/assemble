@@ -20,6 +20,7 @@ popd
 
 echo "---> Installing application to web container - ${PWD}"
 cp -Rf /tmp/src/dist/. ./
+cp -Rf /tmp/src/openshift/etc/* ../etc
 
 # echo "---> Removing application source"
 # rm -rf /tmp/src

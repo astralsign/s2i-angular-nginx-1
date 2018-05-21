@@ -37,7 +37,8 @@ RUN yum install -y deltarpm && \
     yum update -y && \
     yum install -y centos-release-scl && \
     yum install -y rh-nginx112 rh-nodejs8 && \
-    yum clean all -y
+    yum clean all -y && \
+    rm -rf /var/cache/yum
 
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH

@@ -1,0 +1,25 @@
+kind: BuildConfig
+apiVersion: "v1"
+metadata:
+  name: s2i-angular-nginx
+triggers:
+  - type: ConfigChange
+  - github:
+      secret: 5e2c820db87f67d7
+    type: GitHub
+spec:
+  source:
+    type: Git
+    git:
+      uri: https://github.com/klmcwhirter/s2i-angular-nginx.git
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: openshift/origin-sti-builder:v3.9.0
+      exposeDockerSocket: true
+  output:
+    to:
+      kind: ImageStreamTag
+      name: s2i-angular-nginx:latest

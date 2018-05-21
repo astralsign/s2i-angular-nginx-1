@@ -11,14 +11,14 @@ You can directly invoke S2I builds from command line using the [S2I](https://git
 This repository contains an angular app (*ng new test-app*) in the directory test/test-app that can be used for demo purpose. To build this demo app with S2i simply execute:
 
 ```
-s2i build https://github.com/klmcwhirter/s2i-angular-container.git --context-dir=test/test-app/ klmcwhirter/s2i-angular-container angular-sample-app
+s2i build https://github.com/klmcwhirter/s2i-angular-nginx.git --context-dir=test/test-app/ klmcwhirter/s2i-angular-nginx angular-sample-app
 docker run -p 8080:8080 angular-sample-app
 ```
 
 ### Incremental Builds
 You can trigger incremental builds by specifying *--incremental=true* when building an image. Incremental builds provide the already installed node_modules directory from a previous build within a following build. This will dramatically speed up installation of NodeJS dependencies.
 ```
-s2i build https://github.com/klmcwhirter/s2i-angular-container.git --incremental=true --context-dir=test/test-app/ klmcwhirter/s2i-angular-container angular-sample-app
+s2i build https://github.com/klmcwhirter/s2i-angular-nginx.git --incremental=true --context-dir=test/test-app/ klmcwhirter/s2i-angular-nginx angular-sample-app
 docker run -p 8080:8080 angular-sample-app
 ```
 
@@ -31,12 +31,12 @@ The same applies to Angular Apps that are compiled using a full NodeJS / NPM env
 
 To use a different image for runtime, you can do the following with S2I:
 ```
-s2i build https://github.com/klmcwhirter/s2i-angular-container.git --context-dir=test/test-app/ klmcwhirter/s2i-angular-container angular-sample-app --runtime-image <runtime-image> --runtime-artifact </path/to/artifact>
+s2i build https://github.com/klmcwhirter/s2i-angular-nginx.git --context-dir=test/test-app/ klmcwhirter/s2i-angular-nginx angular-sample-app --runtime-image <runtime-image> --runtime-artifact </path/to/artifact>
 ```
 
 For example to run the built app using nginx you could use the following:
 ```
-s2i build https://github.com/klmcwhirter/s2i-angular-container.git --context-dir=test/test-app/ klmcwhirter/s2i-angular-container angular-sample-app --runtime-image nginx --runtime-artifact /opt/app-root/src:/usr/share/nginx/html
+s2i build https://github.com/klmcwhirter/s2i-angular-nginx.git --context-dir=test/test-app/ klmcwhirter/s2i-angular-nginx angular-sample-app --runtime-image nginx --runtime-artifact /opt/app-root/src:/usr/share/nginx/html
 ```
 
 ## OpenShift
