@@ -20,8 +20,10 @@ npm run build
 popd
 
 echo "---> Installing application to web container - ${PWD}"
-cp -Rf /tmp/src/dist/. ./
-cp -Rf /tmp/src/openshift/etc/* ../etc
+cp -Rf /tmp/src/dist/*/* ./
+if [ -d /tmp/src/openshift/etc ]; then  
+    cp -Rf /tmp/src/openshift/etc/* ../etc
+fi
 
 # echo "---> Removing application source"
 # rm -rf /tmp/src
