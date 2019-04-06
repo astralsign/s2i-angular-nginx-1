@@ -20,7 +20,7 @@ npm run build
 popd
 
 echo "---> Installing application to web container - ${PWD}"
-cp -Rf /tmp/src/dist/*/* ./
+cp -Rf /tmp/src/dist/* ./
 if [ -d /tmp/src/.openshiftio/etc ]; then  
     cp -Rf /tmp/src/.openshiftio/etc/* ../etc
 fi
