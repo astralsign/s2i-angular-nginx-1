@@ -15,14 +15,16 @@ npm install --only=dev
 
 echo "---> Building Angular CLI Application"
 #./node_modules/@angular/cli/bin/ng build --prod
-npm run build
+npm run build ${BASE_HREF:+ -- --base-href "${BASE_HREF}"}
 
 popd
 
 echo "---> Installing application to web container - ${PWD}"
 cp -Rf /tmp/src/dist/* ./
-if [ -d /tmp/src/.openshiftio/etc ]; then  
-    cp -Rf /tmp/src/.openshiftio/etc/* ../etc
+
+if [ -d /tmp/src/.openshiftio/etc ]; then
+    echo "---> Copying custom nginx configs"
+    cp -vRf /tmp/src/.openshiftio/etc/* ../etc
 fi
 
 # echo "---> Removing application source"
