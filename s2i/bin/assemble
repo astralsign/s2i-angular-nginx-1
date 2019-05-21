@@ -17,10 +17,17 @@ echo "---> Building Angular CLI Application"
 #./node_modules/@angular/cli/bin/ng build --prod
 npm run build ${BASE_HREF:+ -- --base-href "${BASE_HREF}"}
 
+path=$(cat angular.json | jq -r .defaultProject)
+if [ "${path}" == "null" ]; then
+    path=""
+fi
+
+echo "---> Angular Application path '${path}'"
+
 popd
 
-echo "---> Installing application to web container - ${PWD}"
-cp -Rf /tmp/src/dist/* ./
+echo "---> Installing ${path} application to web container - ${PWD}"
+cp -Rf /tmp/src/dist/${path}/* ./
 
 if [ -d /tmp/src/.openshiftio/etc ]; then
     echo "---> Copying custom nginx configs"

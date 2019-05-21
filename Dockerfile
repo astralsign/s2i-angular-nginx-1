@@ -36,7 +36,9 @@ ENV NPM_CONFIG_LOGLEVEL=info \
 RUN yum install -y deltarpm && \
     yum update -y && \
     yum install -y centos-release-scl && \
+    yum install -y epel-release && \
     yum install -y rh-nginx112 rh-nodejs8 && \
+    yum install -y jq && \
     yum clean all -y && \
     rm -rf /var/cache/yum
 
